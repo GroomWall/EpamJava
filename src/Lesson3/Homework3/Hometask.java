@@ -1,8 +1,14 @@
+/*
+ * Программа строит однотипные треугольники 
+ * с использованием циклов while
+ * Задание выполнил Калмыков Вадим 11:01:2020
+ */
 package Lesson3.Homework3;
 public class Hometask {
     public static void main(String[] args) {
+        
         // -------------------------------------------Step 1----------------------------------------
-
+        
         int counter = 1;
         while (counter<=7){
             int number = counter;
@@ -67,6 +73,7 @@ public class Hometask {
         }
 
         // -------------------------------------------Step 4----------------------------------------
+        
         counterOfStars = 1;
         spacesCounter = 6;
         while (counterOfStars <= 8){
@@ -106,6 +113,7 @@ public class Hometask {
         }
 
         // -------------------------------------------Step 5----------------------------------------
+        
         int triangleNumber = 0;
         while (triangleNumber < 2) {
             counterOfStars = 1;
