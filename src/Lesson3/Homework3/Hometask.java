@@ -2,6 +2,7 @@ package Lesson3.Homework3;
 public class Hometask {
     public static void main(String[] args) {
         // -------------------------------------------Step 1----------------------------------------
+
         int counter = 1;
         while (counter<=7){
             int number = counter;
