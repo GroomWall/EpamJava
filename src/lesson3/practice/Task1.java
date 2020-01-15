@@ -1,4 +1,4 @@
-package Lesson3.Practice;
+package lesson3.practice;
 
 import java.util.Scanner;
 
