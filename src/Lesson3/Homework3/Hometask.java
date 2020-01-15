@@ -3,7 +3,7 @@
  * с использованием циклов while
  * Задание выполнил Калмыков Вадим 11:01:2020
  */
-package Lesson3.Homework3;
+package lesson3.homework3;
 public class Hometask {
     public static void main(String[] args) {
         
