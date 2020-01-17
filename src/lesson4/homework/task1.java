@@ -5,6 +5,7 @@
 *
 * Программу написал Калмыков Вадим 17.01.2020
 */
+
 package lesson4.homework;
 import java.util.Scanner;
 public class task1 {
