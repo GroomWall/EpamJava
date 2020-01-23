@@ -1,5 +1,10 @@
+/*
+ * Программа создает массив любого типа, а затем определяет
+ * максимальное и минимальное значение элементов массива
+ * и удаляет их дубликаты
+ * Программу написал Калмыков Вадим 23.01.2020
+ */
 package lesson5.additionalTasks;
-
 import java.util.Arrays;
 
 public class task3 {
@@ -9,7 +14,7 @@ public class task3 {
         System.out.println("No duplicate array: " + Arrays.toString(duplicateDelete(initialArray)));
     }
     static int[] duplicateDelete(int[] initialArray){
-        int arrayLength = initialArray.length;
+        int ARRAY_LENGTH = initialArray.length;
         Arrays.sort(initialArray);
         int minimumValue = minValue(initialArray);
         int maximumValue = maxValue(initialArray);
@@ -22,10 +27,10 @@ public class task3 {
                 amountOfMaxValues++;
             }
         }
-        int[] noDuplicateArray = new int[arrayLength - ((amountOfMinValues - 1) + (amountOfMaxValues - 1))];
+        int[] noDuplicateArray = new int[ARRAY_LENGTH - ((amountOfMinValues - 1) + (amountOfMaxValues - 1))];
         int minCounter = 0;
         int maxCounter = 0;
-        for(int i = 0,i2 = 0;i < arrayLength;i++){
+        for(int i = 0,i2 = 0;i < ARRAY_LENGTH;i++){
             if(initialArray[i] == minimumValue){
                 if(minCounter > 0){
                     continue;
