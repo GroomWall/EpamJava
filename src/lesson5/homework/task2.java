@@ -13,8 +13,8 @@ public class task2 {
         System.out.print("Please enter array length: ");
         int arrayLength = scanner.nextInt();
         int[] initialArray = arrayCreator(arrayLength);
-        int[] positiveArray = positiveArray(initialArray);
-        int[] negativeArray = negativeArray(initialArray);
+        int[] positiveArray = positiveArrayParser(initialArray);
+        int[] negativeArray = negativeArrayParser(initialArray);
         System.out.println("Initial array: " + Arrays.toString(initialArray) +
                 "\nPositive array: " + Arrays.toString(positiveArray) +
                 "\nNegative array: " + Arrays.toString(negativeArray));
@@ -28,7 +28,7 @@ public class task2 {
         return initialArray;
     }
 
-    static int[] positiveArray(int[] initialArray){
+    static int[] positiveArrayParser(int[] initialArray){
         int positiveLength = 0;
         for (int value : initialArray) {
             if (value >= 0) {
@@ -46,7 +46,7 @@ public class task2 {
         return positiveArray;
     }
 
-    static int[] negativeArray(int[] initialArray) {
+    static int[] negativeArrayParser(int[] initialArray) {
         int negativeLength = 0;
         for (int value : initialArray) {
             if (value < 0) {

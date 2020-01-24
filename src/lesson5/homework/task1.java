@@ -19,13 +19,13 @@ public class task1 {
         int arrayLength = scanner.nextInt();
         int[] firstArray = arrayCreator(arrayLength);
         int[] secondArray = arrayCreator(arrayLength);
-        int[] summedArray = arrayAdder(firstArray,secondArray);
+        int[] summedArray = twoArraysAdder(firstArray,secondArray);
         System.out.println("First array = " + Arrays.toString(firstArray));
         System.out.println("Second array = " + Arrays.toString(secondArray));
         System.out.println("Array1 + Array2 = " + Arrays.toString(summedArray));
     }
 
-    static int[] arrayAdder (int[] firstArray,int[] secondArray){
+    static int[] twoArraysAdder (int[] firstArray,int[] secondArray){
         int[] summedArray = new int[firstArray.length];
         for(int i = 0; i < summedArray.length;i++){
             summedArray[i] = firstArray[i] + secondArray[i];
