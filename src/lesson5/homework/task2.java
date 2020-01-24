@@ -12,37 +12,56 @@ public class task2 {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter array length: ");
         int arrayLength = scanner.nextInt();
-        System.out.println(arrayCreator(arrayLength));
+        int[] initialArray = arrayCreator(arrayLength);
+        int[] positiveArray = positiveArray(initialArray);
+        int[] negativeArray = negativeArray(initialArray);
+        System.out.println("Initial array: " + Arrays.toString(initialArray) +
+                "\nPositive array: " + Arrays.toString(positiveArray) +
+                "\nNegative array: " + Arrays.toString(negativeArray));
     }
 
-    static String arrayCreator(int arrayLength){
+    static int[] arrayCreator(int arrayLength){
         int[] initialArray = new int[arrayLength];
-
         for(int i = 0;i < initialArray.length;i++ ){
             initialArray[i] = advancedRandomizer();
         }
+        return initialArray;
+    }
+
+    static int[] positiveArray(int[] initialArray){
+        int positiveLength = 0;
+        for (int value : initialArray) {
+            if (value >= 0) {
+                positiveLength++;
+            }
+        }
+        int i = 0;
+        int[] positiveArray = new int[positiveLength];
+        for (int value : initialArray) {
+            if (value >= 0) {
+                positiveArray[i] = value;
+                i++;
+            }
+        }
+        return positiveArray;
+    }
+
+    static int[] negativeArray(int[] initialArray) {
         int negativeLength = 0;
         for (int value : initialArray) {
             if (value < 0) {
                 negativeLength++;
             }
         }
-        int[] positiveArray = new int[arrayLength - negativeLength];
         int[] negativeArray = new int[negativeLength];
-        int i1 = 0;
-        int i2 = 0;
+        int i = 0;
         for (int value : initialArray) {
-            if (value >= 0) {
-                positiveArray[i1] = value;
-                i1++;
-            } else {
-                negativeArray[i2] = value;
-                i2++;
+            if (value < 0) {
+                negativeArray[i] = value;
+                i++;
             }
         }
-        return "Initial array " + Arrays.toString(initialArray) + "\nPositive array: " +
-                Arrays.toString(positiveArray) +
-               "\nNegative array: " + Arrays.toString(negativeArray);
+        return negativeArray;
     }
 
     static int advancedRandomizer(){

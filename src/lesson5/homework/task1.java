@@ -17,27 +17,28 @@ public class task1 {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter array length -> " );
         int arrayLength = scanner.nextInt();
-        System.out.println("Array1 + Array2 = " + Arrays.toString(arrayAdder(arrayLength)));
+        int[] firstArray = arrayCreator(arrayLength);
+        int[] secondArray = arrayCreator(arrayLength);
+        int[] summedArray = arrayAdder(firstArray,secondArray);
+        System.out.println("First array = " + Arrays.toString(firstArray));
+        System.out.println("Second array = " + Arrays.toString(secondArray));
+        System.out.println("Array1 + Array2 = " + Arrays.toString(summedArray));
     }
 
-    static int[] arrayAdder (int arrayLength){
-        int[] firstArray = new int[arrayLength];
-        int[] secondArray = new int[arrayLength];
+    static int[] arrayAdder (int[] firstArray,int[] secondArray){
         int[] summedArray = new int[firstArray.length];
-        int i = 0;
-        while(i < firstArray.length){
-            firstArray[i] = randomizer();
-            secondArray[i] = randomizer();
-            i++;
-        }
-        System.out.println("First array is: " + Arrays.toString(firstArray));
-        System.out.println("Second array is: " + Arrays.toString(secondArray));
-        i = 0;
-        while( i < summedArray.length){
+        for(int i = 0; i < summedArray.length;i++){
             summedArray[i] = firstArray[i] + secondArray[i];
-            i++;
         }
         return summedArray;
+    }
+
+    static int[] arrayCreator(int arrayLength){
+        int[] createdArray = new int[arrayLength];
+        for(int i = 0;i < arrayLength;i++){
+            createdArray[i] = randomizer();
+        }
+        return createdArray;
     }
 
     static int randomizer(){

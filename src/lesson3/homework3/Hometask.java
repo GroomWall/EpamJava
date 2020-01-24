@@ -10,7 +10,7 @@ public class Hometask {
         // -------------------------------------------Step 1----------------------------------------
         
         int counter = 1;
-        while (counter<=7){
+        while (counter <= 7){
             int number = counter;
             while(number > 0) {
                 System.out.print("*" + " ");
@@ -20,7 +20,7 @@ public class Hometask {
             System.out.println();
         }
 
-        while (counter>=1){
+        while (counter >= 1){
             int number = counter;
             while(number > 2) {
                 System.out.print("*" + " ");
@@ -53,8 +53,8 @@ public class Hometask {
 
         // -------------------------------------------Step 3----------------------------------------
 
-        int counterOfStars=1;
-        int FromNumberToZeroCounter=0;
+        int counterOfStars = 1;
+        int FromNumberToZeroCounter = 0;
         spacesCounter = 6;
         while (counterOfStars <= 8){
             int numberofStars = counterOfStars;
@@ -68,7 +68,7 @@ public class Hometask {
                 System.out.print("  ");
                 FromNumberToZeroCounter++;
             }
-            FromNumberToZeroCounter=0;
+            FromNumberToZeroCounter = 0;
             spacesCounter--;
         }
 

@@ -17,18 +17,17 @@ public class task1 {
     }
 
     static String charSeparator(String inputText) {
-        String noSpaceText = inputText.replace(" ", "");
         String refactored;
-        final int TEXT_LENGTH = noSpaceText.length();
+        final int TEXT_LENGTH = inputText.length();
         int lengthCounter = 0;
         String resultingString = "";
         while (lengthCounter < TEXT_LENGTH){
-            refactored = noSpaceText.substring(lengthCounter, lengthCounter + 1);
+            refactored = inputText.substring(lengthCounter, lengthCounter + 1);
             if (resultingString.indexOf(refactored) >= 0) {
                 lengthCounter++;
                 continue;
             }
-            resultingString = resultingString + refactored + " ";
+            resultingString = resultingString + refactored;
             lengthCounter++;
         }
         return resultingString;
