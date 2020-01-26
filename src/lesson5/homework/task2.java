@@ -65,7 +65,10 @@ public class task2 {
     }
 
     static int advancedRandomizer(){
-        int randomNumber = (int)(Math.round((Math.random() * 100)));
+        int randomNumber = (int)(Math.random() * 100);
+        if(randomNumber == 0) {
+            randomNumber = 1;
+        }
         if (Math.random() >= 0.5){
             randomNumber = -randomNumber;
         }
