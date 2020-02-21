@@ -1,6 +1,4 @@
 package lesson8.homework;
-
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -19,8 +17,8 @@ public class Main {
         int yearOfPublishing = 0;
         try {
             choice = scanner.nextInt();
-        } catch (InputMismatchException e) {
-            Validator.errorHandler(e);
+        } catch (Exception e) {
+            Validator.exceptionHandler(e);
         }
         if (choice == 1) {
             try {
@@ -31,8 +29,8 @@ public class Main {
                 priceManipulator.setBooksCost(percentages);
                 priceManipulator.setBooks(priceManipulator.sortByPrice());
                 priceManipulator.printBooks();
-            } catch (InputMismatchException e) {
-                Validator.errorHandler(e);
+            } catch (Exception e) {
+                Validator.exceptionHandler(e);
             }
         } else if (choice == 2) {
             try {
@@ -40,8 +38,6 @@ public class Main {
                 System.out.println("Please enter an author name: ");
                 sortedByAuthor.setBooks(books.getBooks());
                 sortedByAuthor.sortByAuthor();
-                sortedByAuthor.printBooks();
-                System.out.println();
                 author = scanner.next();
                 sortedByAuthor.setBooks(sortedByAuthor.searchByAuthor(author));
                 if (books.getBooks().length == 0) {
@@ -50,15 +46,13 @@ public class Main {
                     sortedByAuthor.printBooks();
                 }
             } catch (Exception e) {
-                Validator.errorHandler(e);
+                Validator.exceptionHandler(e);
             }
         } else if (choice == 3) {
             try {
                 Books sortedByPublisher = new Books();
                 sortedByPublisher.setBooks(books.getBooks());
                 sortedByPublisher.sortByPublishingHouse();
-                sortedByPublisher.printBooks();
-                System.out.println();
                 System.out.println("Please enter a year of publishing: ");
                 yearOfPublishing = scanner.nextInt();
                 sortedByPublisher.setBooks(sortedByPublisher.searchByYear(yearOfPublishing));
@@ -68,8 +62,8 @@ public class Main {
                 } else {
                     sortedByPublisher.printBooks();
                 }
-            } catch (InputMismatchException e) {
-                Validator.errorHandler(e);
+            } catch (Exception e) {
+                Validator.exceptionHandler(e);
             }
         }
     }
