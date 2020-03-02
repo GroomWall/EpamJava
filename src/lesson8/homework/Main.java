@@ -16,12 +16,12 @@ public class Main {
         if (choice == 1) {
             System.out.println("Please enter amount of percentages for cost increasing: ");
             double percentages = Validator.checkDouble();
-            Books priceManipulator = changePrice(books, percentages);
+            Books priceManipulator = changePriceForBooksSet(books, percentages);
             priceManipulator.printBooks();
         } else if (choice == 2) {
             System.out.println("Please enter an author name: ");
             String author = scanner.next();
-            Books sortedByAuthor = searchByAuthor(books, author);
+            Books sortedByAuthor = createBooksSetByAuthorName(books, author);
             if (books.getBooks().length == 0) {
                 System.out.println("There are no books with such an author");
             } else {
@@ -30,7 +30,7 @@ public class Main {
         } else if (choice == 3) {
             System.out.println("Please enter a year of publishing: ");
             int yearOfPublishing = scanner.nextInt();
-            Books sortedByPublisher = searchByPublisher(books, yearOfPublishing);
+            Books sortedByPublisher = createBooksSetByYearOfPublishing(books, yearOfPublishing);
             if (sortedByPublisher.getBooks().length == 0) {
                 System.out.println("There is no books with year greater than entered");
             } else {
@@ -39,28 +39,28 @@ public class Main {
         }
     }
 
-    static Books searchByAuthor(Books books, String author) {
-        Books sortedByAuthor = new Books();
-        sortedByAuthor.setBooks(books.getBooks());
-        sortedByAuthor.sortByAuthor();
-        sortedByAuthor.setBooks(sortedByAuthor.searchByAuthor(author));
-        return sortedByAuthor;
+    static Books createBooksSetByAuthorName(Books books, String author) {
+        Books booksForSortingByAuthor = new Books();
+        booksForSortingByAuthor.setBooks(books.getBooks());
+        booksForSortingByAuthor.sortByAuthor();
+        booksForSortingByAuthor.setBooks(booksForSortingByAuthor.searchByAuthor(author));
+        return booksForSortingByAuthor;
     }
 
-    static Books searchByPublisher(Books books, int yearOfPublishing) {
-        Books sortedByPublisher = new Books();
-        sortedByPublisher.setBooks(books.getBooks());
-        sortedByPublisher.sortByPublishingHouse();
-        sortedByPublisher.setBooks(sortedByPublisher.searchByYear(yearOfPublishing));
-        return sortedByPublisher;
+    static Books createBooksSetByYearOfPublishing(Books books, int yearOfPublishing) {
+        Books booksForSortingByPublisher = new Books();
+        booksForSortingByPublisher.setBooks(books.getBooks());
+        booksForSortingByPublisher.sortByPublishingHouse();
+        booksForSortingByPublisher.setBooks(booksForSortingByPublisher.searchByYear(yearOfPublishing));
+        return booksForSortingByPublisher;
     }
 
-    static Books changePrice(Books books, double percentages) {
-        Books priceManipulator = new Books();
-        priceManipulator.setBooks(books.getBooks());
-        priceManipulator.setBooksCost(percentages);
-        priceManipulator.setBooks(priceManipulator.sortByPrice());
-        return priceManipulator;
+    static Books changePriceForBooksSet(Books books, double percentages) {
+        Books booksForPriceChanging = new Books();
+        booksForPriceChanging.setBooks(books.getBooks());
+        booksForPriceChanging.setBooksCost(percentages);
+        booksForPriceChanging.setBooks(booksForPriceChanging.sortByPrice());
+        return booksForPriceChanging;
     }
 
 }

@@ -27,13 +27,13 @@ public class Main {
         if (choice == 1) {
             System.out.println("Please enter amount of percentages for cost increasing: ");
             double percentages = Validator.checkDouble();
-            Books priceManipulator = changePrice(books, percentages, serializationChoice);
+            Books priceManipulator = changePriceForBooksSet(books, percentages, serializationChoice);
             priceManipulator.printBooks();
             serializer(priceManipulator.currentBookshelfArray);
         } else if (choice == 2) {
             System.out.println("Please enter an author name: ");
             String author = scanner.next();
-            Books sortedByAuthor = searchByAuthor(books, author, serializationChoice);
+            Books sortedByAuthor = createBooksSetByAuthorName(books, author, serializationChoice);
             if (books.getBooks().length == 0) {
                 System.out.println("There are no books with such an author");
             } else {
@@ -43,7 +43,7 @@ public class Main {
         } else if (choice == 3) {
             System.out.println("Please enter a year of publishing: ");
             int yearOfPublishing = scanner.nextInt();
-            Books sortedByPublisher = searchByPublisher(books, yearOfPublishing, serializationChoice);
+            Books sortedByPublisher = createBooksSetByYearOfPublishing(books, yearOfPublishing, serializationChoice);
             if (sortedByPublisher.getBooks().length == 0) {
                 System.out.println("There is no books with year greater than entered");
             } else {
@@ -53,40 +53,40 @@ public class Main {
         }
     }
 
-    static Books searchByAuthor(Books books, String author, int choice) {
-        Books sortedByAuthor = new Books();
+    static Books createBooksSetByAuthorName(Books books, String author, int choice) {
+        Books booksForSortingByAuthor = new Books();
         if (choice == 1) {
-            sortedByAuthor.setBooks(books.getCurrentBookshelfArray());
+            booksForSortingByAuthor.setBooks(books.getCurrentBookshelfArray());
         } else {
-            sortedByAuthor.setBooks(books.getBooks());
+            booksForSortingByAuthor.setBooks(books.getBooks());
         }
-        sortedByAuthor.sortByAuthor();
-        sortedByAuthor.setBooks(sortedByAuthor.searchByAuthor(author));
-        return sortedByAuthor;
+        booksForSortingByAuthor.sortByAuthor();
+        booksForSortingByAuthor.setBooks(booksForSortingByAuthor.searchByAuthor(author));
+        return booksForSortingByAuthor;
     }
 
-    static Books searchByPublisher(Books books, int yearOfPublishing, int choice) {
-        Books sortedByPublisher = new Books();
+    static Books createBooksSetByYearOfPublishing(Books books, int yearOfPublishing, int choice) {
+        Books booksForSortingByPublisher = new Books();
         if (choice == 1) {
-            sortedByPublisher.setBooks(books.getCurrentBookshelfArray());
+            booksForSortingByPublisher.setBooks(books.getCurrentBookshelfArray());
         } else {
-            sortedByPublisher.setBooks(books.getBooks());
+            booksForSortingByPublisher.setBooks(books.getBooks());
         }
-        sortedByPublisher.sortByPublishingHouse();
-        sortedByPublisher.setBooks(sortedByPublisher.searchByYear(yearOfPublishing));
-        return sortedByPublisher;
+        booksForSortingByPublisher.sortByPublishingHouse();
+        booksForSortingByPublisher.setBooks(booksForSortingByPublisher.searchByYear(yearOfPublishing));
+        return booksForSortingByPublisher;
     }
 
-    static Books changePrice(Books books, double percentages, int choice) {
-        Books priceManipulator = new Books();
+    static Books changePriceForBooksSet(Books books, double percentages, int choice) {
+        Books booksForPriceChanging = new Books();
         if (choice == 1) {
-            priceManipulator.setBooks(books.getCurrentBookshelfArray());
+            booksForPriceChanging.setBooks(books.getCurrentBookshelfArray());
         } else {
-            priceManipulator.setBooks(books.getBooks());
+            booksForPriceChanging.setBooks(books.getBooks());
         }
-        priceManipulator.setBooksCost(percentages);
-        priceManipulator.setBooks(priceManipulator.sortByPrice());
-        return priceManipulator;
+        booksForPriceChanging.setBooksCost(percentages);
+        booksForPriceChanging.setBooks(booksForPriceChanging.sortByPrice());
+        return booksForPriceChanging;
     }
 
     static void serializer(Book[] serTheseBooks) throws IOException {
