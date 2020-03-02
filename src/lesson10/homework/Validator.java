@@ -45,7 +45,7 @@ public class Validator {
         } while (true);
     }
 
-    static Book[] checkBooks() {
+    static Book[] checkBooksDeserialization() {
         AdvancedScanner scanner = new AdvancedScanner();
         Serializer serializer = new Serializer();
         do {

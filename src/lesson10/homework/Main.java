@@ -11,7 +11,7 @@ public class Main {
         int serializationChoice = Validator.checkSerializationChoice();
         Books books = new Books();
         if (serializationChoice == 1) {
-            books.currentBookshelfArray = Validator.checkBooks();
+            books.currentBookshelfArray = Validator.checkBooksDeserialization();
             for (Book book : books.currentBookshelfArray) {
                 System.out.println(book.toString());
             }
@@ -99,14 +99,6 @@ public class Main {
             String name = scanner.next();
             serializer.serialization(serTheseBooks, name);
         }
-    }
-
-    static Book[] deserializer() throws IOException {
-        Serializer serializer = new Serializer();
-        AdvancedScanner scanner = new AdvancedScanner();
-        System.out.println("Please enter the name of a file to read: ");
-        String name = scanner.next();
-        return serializer.deserialization(name);
     }
 
 }
