@@ -79,10 +79,9 @@ public class Books {
         return Arrays.copyOf(books2, count2);
     }
 
-    public Book[] sortByAuthor() {
+    public void sortByAuthor() {
         Book[] sortedArray = currentBookshelfArray;
         Arrays.sort(sortedArray, new MyComparatorAuthor());
-        return sortedArray;
     }
 
     public Book[] sortByPrice() {
@@ -99,9 +98,8 @@ public class Books {
         return arrayToSort;
     }
 
-    public Book[] sortByPublishingHouse() {
+    public void sortByPublishingHouse() {
         Book[] sortedArray = currentBookshelfArray;
         Arrays.sort(sortedArray, new MyComparatorPublishingHouse());
-        return sortedArray;
     }
 }
