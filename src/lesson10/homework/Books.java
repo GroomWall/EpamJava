@@ -1,6 +1,7 @@
 package lesson10.homework;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Books {
     private Book[] books = new Book[]{
@@ -49,6 +50,10 @@ public class Books {
         this.currentBookshelfArray = booksToSet;
     }
 
+    public Book[] getCurrentBookshelfArray() {
+        return currentBookshelfArray;
+    }
+
     public void setBooksCost(double cost) {
         for (Book book : currentBookshelfArray) {
             book.setCost(cost);
@@ -79,14 +84,25 @@ public class Books {
         return Arrays.copyOf(books2, count2);
     }
 
-    public Book[] sortByAuthor() {
+    public void sortByAuthor() {
         Book[] sortedArray = currentBookshelfArray;
-        Arrays.sort(sortedArray, new MyComparatorAuthor());
-        return sortedArray;
+        Arrays.sort(sortedArray, new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                String author1 = ((Book) o1).getAuthor();
+                String author2 = ((Book) o2).getAuthor();
+                return author1.compareTo(author2);
+            }
+        });
     }
 
     public Book[] sortByPrice() {
-        Arrays.sort(currentBookshelfArray, new MyComparatorPrice());
+        Arrays.sort(currentBookshelfArray, new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                return Double.compare(((Book) o1).getCost(), ((Book) o2).getCost());
+            }
+        });
         return descendOrderSorter(currentBookshelfArray);
     }
 
@@ -99,9 +115,15 @@ public class Books {
         return arrayToSort;
     }
 
-    public Book[] sortByPublishingHouse() {
+    public void sortByPublishingHouse() {
         Book[] sortedArray = currentBookshelfArray;
-        Arrays.sort(sortedArray, new MyComparatorPublishingHouse());
-        return sortedArray;
+        Arrays.sort(sortedArray, new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                String publishingHouse = ((Book) o1).getPublishingHouse();
+                String publishingHouse2 = ((Book) o2).getPublishingHouse();
+                return publishingHouse.compareTo(publishingHouse2);
+            }
+        });
     }
 }

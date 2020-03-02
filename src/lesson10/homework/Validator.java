@@ -2,26 +2,63 @@ package lesson10.homework;
 
 public class Validator {
 
-    static void exceptionHandler(Exception e) {
-        switch (e.getClass().getSimpleName()) {
-            case ("InputMismatchException"):
-                System.err.println("You entered wrong data, please enter numbers from pool (1-3) ");
-                break;
-            case ("NullPointerException"):
-                System.err.println("There is no element with such filter criteria");
-                break;
-            case ("ArithmeticException"):
-                System.err.println("An exception occurred due to an error while performing arithmetic calculation " +
-                        "(for example, with an attempt to integer division by zero)");
-                break;
-            case ("ArrayIndexOutOfBoundsException"):
-                System.err.println("Problem with the number of books entered, " +
-                        "maybe amount exceeds the number of books on the bookshelf");
-                break;
-            default:
-                System.err.println("Something wrong with data entered");
-                break;
-        }
+    static int checkSerializationChoice() {
+        AdvancedScanner scanner = new AdvancedScanner();
+        do {
+            try {
+                int input = scanner.nextInt();
+                if (input == 0 || input == 1) {
+                    return input;
+                } else {
+                    System.out.println("You entered non integer value, retype once more with numbers 0 or 1");
+                }
+            } catch (Exception ignored) {
+                System.out.println("You entered non integer value, retype once more with numbers 0 or 1");
+            }
+        } while (true);
     }
 
+    static int operationTypeChoice() {
+        AdvancedScanner scanner = new AdvancedScanner();
+        do {
+            try {
+                int input = scanner.nextInt();
+                if (input == 1 || input == 2 || input == 3) {
+                    return input;
+                } else {
+                    System.out.println("You entered non integer value, retype once more with numbers 1, 2 or 3");
+                }
+            } catch (Exception ignored) {
+                System.out.println("You entered non integer value, retype once more with numbers 1, 2 or 3");
+            }
+        } while (true);
+    }
+
+    static double checkDouble() {
+        AdvancedScanner scanner = new AdvancedScanner();
+        do {
+            try {
+                return scanner.nextDouble();
+            } catch (Exception ignored) {
+                System.out.println("Please, enter a double type value.");
+            }
+        } while (true);
+    }
+
+    static Book[] checkBooks() {
+        AdvancedScanner scanner = new AdvancedScanner();
+        Serializer serializer = new Serializer();
+        do {
+            try {
+                System.out.println("Please enter the name of a file to read: ");
+                String fileName = scanner.next();
+                Book[] bookArray = serializer.deserialization(fileName);
+                if (bookArray != null) {
+                    return bookArray;
+                }
+            } catch (Exception ignored) {
+                System.out.println("File does not exist or you entered a wrong name.");
+            }
+        } while (true);
+    }
 }

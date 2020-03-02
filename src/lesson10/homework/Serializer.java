@@ -34,8 +34,7 @@ public class Serializer {
                 ois = new ObjectInputStream(fis);
                 return (Book[]) ois.readObject();
             }
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (IOException | ClassNotFoundException ignored) {
         } finally {
             try {
                 ois.close();
