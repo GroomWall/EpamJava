@@ -59,7 +59,6 @@ public class BooksChangeTest {
     @Test
     public void searchByAuthorTest() throws InvalidObjectException {
         Books books = booksSetup();
-        int i = 0;
         books.setBooks(books.getBooks());
         books.sortByAuthor();
         books.setBooks(books.searchByAuthor("Vadym"));
@@ -72,7 +71,6 @@ public class BooksChangeTest {
     @Test
     public void searchByYearTest() throws InvalidObjectException {
         Books books = booksSetup();
-        int i = 0;
         books.setBooks(books.getBooks());
         books.sortByPublishingHouse();
         books.setBooks(books.searchByYear(2000));
@@ -90,4 +88,13 @@ public class BooksChangeTest {
         Assert.assertEquals(successCounter, books.getCurrentBookshelfArray().length);
     }
 
+    @Test
+    public void descendOrderSort() throws InvalidObjectException {
+        Books books = booksSetup();
+        String name = "dOrderSort7";
+        Book[] booksForTest = BooksDeserialization(name);
+        books.descendOrderSorter(books.getCurrentBookshelfArray());
+        int successCounter = fileComparator(booksForTest, books);
+        Assert.assertEquals(successCounter, books.getCurrentBookshelfArray().length);
+    }
 }
