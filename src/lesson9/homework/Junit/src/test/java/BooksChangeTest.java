@@ -97,4 +97,5 @@ public class BooksChangeTest {
         int successCounter = fileComparator(booksForTest, books);
         Assert.assertEquals(successCounter, books.getCurrentBookshelfArray().length);
     }
+
 }
