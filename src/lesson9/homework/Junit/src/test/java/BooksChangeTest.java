@@ -31,15 +31,8 @@ public class BooksChangeTest {
         return books;
     }
 
-    @Test
-    public void setBooksCostTest() throws InvalidObjectException {
-        Books books = booksSetup();
+    private int fileComparator(Book[] booksForTest,Books books){
         int i = 0;
-        books.setBooks(books.getBooks());
-        books.setBooksCost(10);
-        books.setBooks(books.sortByPrice());
-        String name = "setBooksCostTest10";
-        Book[] booksForTest = BooksDeserialization(name);
         int successCounter = 0;
         for (Book book : booksForTest) {
             boolean check = book.equals(books.getCurrentBookshelfArray()[i]);
@@ -48,6 +41,18 @@ public class BooksChangeTest {
             }
             i++;
         }
+        return successCounter;
+    }
+
+    @Test
+    public void setBooksCostTest() throws InvalidObjectException {
+        Books books = booksSetup();
+        books.setBooks(books.getBooks());
+        books.setBooksCost(10);
+        books.setBooks(books.sortByPrice());
+        String name = "setBooksCostTest10";
+        Book[] booksForTest = BooksDeserialization(name);
+        int successCounter = fileComparator(booksForTest, books);
         Assert.assertEquals(successCounter, books.getCurrentBookshelfArray().length);
     }
 
@@ -60,14 +65,7 @@ public class BooksChangeTest {
         books.setBooks(books.searchByAuthor("Vadym"));
         String name = "searchByAuthorVadym";
         Book[] booksForTest = BooksDeserialization(name);
-        int successCounter = 0;
-        for (Book book : booksForTest) {
-            boolean check = book.equals(books.getCurrentBookshelfArray()[i]);
-            if (check) {
-                successCounter++;
-            }
-            i++;
-        }
+        int successCounter = fileComparator(booksForTest, books);
         Assert.assertEquals(successCounter, books.getCurrentBookshelfArray().length);
     }
 
@@ -80,31 +78,15 @@ public class BooksChangeTest {
         books.setBooks(books.searchByYear(2000));
         String name = "searchByYearTest2000";
         Book[] booksForTest = BooksDeserialization(name);
-        int successCounter = 0;
-        for (Book book : booksForTest) {
-            boolean check = book.equals(books.getCurrentBookshelfArray()[i]);
-            if (check) {
-                successCounter++;
-            }
-            i++;
-        }
+        int successCounter = fileComparator(booksForTest, books);
         Assert.assertEquals(successCounter, books.getCurrentBookshelfArray().length);
     }
-
 
     @Test
     public void sortByAuthorTest() {
         Books books = new Books();
         books.sortByAuthor();
-        int i = 0;
-        int successCounter = 0;
-        for (Book book : booksForTest) {
-            boolean check = book.equals(books.getCurrentBookshelfArray()[i]);
-            if (check) {
-                successCounter++;
-            }
-            i++;
-        }
+        int successCounter = fileComparator(booksForTest, books);
         Assert.assertEquals(successCounter, books.getCurrentBookshelfArray().length);
     }
 
