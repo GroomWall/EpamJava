@@ -23,7 +23,7 @@ public class BooksChangeTest {
         return serializer.deserialization(name);
     }
 
-    private Books booksSetup(){
+    private Books booksSetup() {
         Books books = new Books();
         books.addBook(new Book(8, "Harry Potter 8", "Vadym", "Bloomsbury Publishing", 2000, 200, 30));
         books.addBook(new Book(9, "Harry Potter 9", "Vadym", "Bloomsbury Publishing", 2220, 211, 32));
@@ -31,7 +31,7 @@ public class BooksChangeTest {
         return books;
     }
 
-    private int fileComparator(Book[] booksForTest,Books books){
+    private int fileComparator(Book[] booksForTest, Books books) {
         int i = 0;
         int successCounter = 0;
         for (Book book : booksForTest) {
@@ -84,6 +84,26 @@ public class BooksChangeTest {
     public void sortByAuthorTest() {
         Books books = new Books();
         books.sortByAuthor();
+        int successCounter = fileComparator(booksForTest, books);
+        Assert.assertEquals(successCounter, books.getCurrentBookshelfArray().length);
+    }
+
+    @Test
+    public void sortByPrice() throws InvalidObjectException {
+        Books books = booksSetup();
+        String name = "sortByPriceTest";
+        Book[] booksForTest = BooksDeserialization(name);
+        books.sortByPrice();
+        int successCounter = fileComparator(booksForTest, books);
+        Assert.assertEquals(successCounter, books.getCurrentBookshelfArray().length);
+    }
+
+    @Test
+    public void sortByPublishingHouseTest() throws InvalidObjectException {
+        Books books = booksSetup();
+        String name = "sortByPublishingHouseTest";
+        Book[] booksForTest = BooksDeserialization(name);
+        books.sortByPublishingHouse();
         int successCounter = fileComparator(booksForTest, books);
         Assert.assertEquals(successCounter, books.getCurrentBookshelfArray().length);
     }
